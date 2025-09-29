@@ -136,13 +136,6 @@ namespace WindowsFormsApp3
                 SqlCommand checkCmd = new SqlCommand(checkPhone, conn);
                 checkCmd.Parameters.AddWithValue("@phone", txtSDT.Text);
 
-                int exists = (int)checkCmd.ExecuteScalar();
-                if (exists > 0)
-                {
-                    MessageBox.Show("⚠️ Số điện thoại này đã tồn tại trong hệ thống!");
-                    return;
-                }
-
                 string query = @"UPDATE Customers 
                          SET name=@name, phone=@phone, email=@email, 
                              address=@address, type=@type, created_at=@created_at
@@ -187,6 +180,11 @@ namespace WindowsFormsApp3
                 }
 
                 MessageBox.Show("🗑️ Xóa khách hàng thành công!");
+                txtMaKH.Clear();
+                txtHoTen.Clear();
+                txtSDT.Clear();
+                txtEmail.Clear();
+                txtDiaChi.Clear();
                 LoadData();
             }
         }
