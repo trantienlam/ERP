@@ -314,7 +314,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 20);
             this.label3.TabIndex = 17;
-            this.label3.Text = "Ghi chú";
+            this.label3.Text = "Mô tả";
             // 
             // label2
             // 
@@ -372,6 +372,8 @@
             // 
             this.guna2GradientPanel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2GradientPanel3.BorderRadius = 20;
+            this.guna2GradientPanel3.Controls.Add(this.label7);
+            this.guna2GradientPanel3.Controls.Add(this.guna2TextBox2);
             this.guna2GradientPanel3.Controls.Add(this.label4);
             this.guna2GradientPanel3.Controls.Add(this.txtTenSP);
             this.guna2GradientPanel3.Controls.Add(this.cbTrangThai);
@@ -592,7 +594,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtGhiChu;
         private Guna.UI2.WinForms.Guna2TextBox txtDiaChi;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2DateTimePicker ngaydathang;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
