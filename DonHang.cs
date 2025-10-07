@@ -49,11 +49,42 @@ namespace WindowsFormsApp3
                 dataGridView1.DataSource = dt;
             }
         }
+        // Hàm kiểm tra dữ liệu nhập
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(txtMaKH.Text) ||
+                string.IsNullOrWhiteSpace(txtTenSP.Text) ||
+                string.IsNullOrWhiteSpace(txtDiaChi.Text) ||
+                string.IsNullOrWhiteSpace(txtGhiChu.Text))
+            {
+                MessageBox.Show("❌ Không được để trống bất kỳ trường nào (trừ Mã đơn hàng)!",
+                                "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!int.TryParse(txtMaKH.Text, out _))
+            {
+                MessageBox.Show("⚠️ Mã khách hàng phải là số!",
+                                "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (cbTrangThai.SelectedItem == null)
+            {
+                MessageBox.Show("⚠️ Vui lòng chọn trạng thái đơn hàng!",
+                                "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
             {
+                if (!ValidateInput())
+                    return;
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
@@ -107,6 +138,8 @@ namespace WindowsFormsApp3
         {
             try
             {
+                if (!ValidateInput())
+                    return;
                 if (dataGridView1.Tag == null)
                 {
                     MessageBox.Show("Vui lòng chọn đơn hàng cần sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -285,6 +318,30 @@ namespace WindowsFormsApp3
             if (cbTrangThai.Items.Count > 0)
                 cbTrangThai.SelectedIndex = -1;
             LoadOrders();
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {     
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Lấy customer_id từ dòng đang chọn
+                int orderId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Mã Đơn Hàng"].Value);
+                DateTime deliveryDate = DateTime.MinValue;
+
+                if (dataGridView1.CurrentRow.Cells["Ngày Đặt"].Value != DBNull.Value)
+                {
+                    deliveryDate = Convert.ToDateTime(dataGridView1.CurrentRow.Cells["Ngày Đặt"].Value);
+                }
+                // Mở form chi tiết và truyền customerId sang
+                ChiTiet frmChiTiet = new ChiTiet();
+                frmChiTiet.OrderId = orderId;
+                frmChiTiet.DeliveryDate = deliveryDate;
+                frmChiTiet.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một đơn hàng để xem chi tiết!");
+            }
         }
     }
 }

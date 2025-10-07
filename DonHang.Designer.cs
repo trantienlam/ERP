@@ -47,10 +47,10 @@
             this.txtGhiChu = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtDiaChi = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2GradientPanel3 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTenSP = new Guna.UI2.WinForms.Guna2TextBox();
             this.cbTrangThai = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ngaydathang = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
@@ -80,6 +80,7 @@
             this.btnDetail.Size = new System.Drawing.Size(218, 62);
             this.btnDetail.TabIndex = 38;
             this.btnDetail.Text = "Chi tiết đơn hàng";
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // dataGridView1
             // 
@@ -312,7 +313,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(295, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 17;
             this.label3.Text = "Mô tả";
             // 
@@ -372,12 +373,10 @@
             // 
             this.guna2GradientPanel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2GradientPanel3.BorderRadius = 20;
-            this.guna2GradientPanel3.Controls.Add(this.label7);
-            this.guna2GradientPanel3.Controls.Add(this.guna2TextBox2);
+            this.guna2GradientPanel3.Controls.Add(this.label1);
             this.guna2GradientPanel3.Controls.Add(this.label4);
             this.guna2GradientPanel3.Controls.Add(this.txtTenSP);
             this.guna2GradientPanel3.Controls.Add(this.cbTrangThai);
-            this.guna2GradientPanel3.Controls.Add(this.label6);
             this.guna2GradientPanel3.Controls.Add(this.label5);
             this.guna2GradientPanel3.Controls.Add(this.ngaydathang);
             this.guna2GradientPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(176)))), ((int)(((byte)(168)))));
@@ -388,6 +387,16 @@
             this.guna2GradientPanel3.Name = "guna2GradientPanel3";
             this.guna2GradientPanel3.Size = new System.Drawing.Size(359, 238);
             this.guna2GradientPanel3.TabIndex = 29;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 20);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Trạng thái";
             // 
             // label4
             // 
@@ -441,21 +450,11 @@
             this.cbTrangThai.Size = new System.Drawing.Size(178, 36);
             this.cbTrangThai.TabIndex = 26;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(26, 78);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 20);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Trạng thái";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(29, 134);
+            this.label5.Location = new System.Drawing.Point(20, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 20);
             this.label5.TabIndex = 11;
@@ -603,5 +602,6 @@
         private Guna.UI2.WinForms.Guna2TextBox MaDH;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox txtTenSP;
+        private System.Windows.Forms.Label label1;
     }
 }
